@@ -15,8 +15,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
     "@vimeo/player": "^2.16.4",
     "lodash.throttle": "^4.1.1",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "posthtml-include": "^1.7.4",
     "simplelightbox": "^2.10.3"
   },
   "devDependencies": {
