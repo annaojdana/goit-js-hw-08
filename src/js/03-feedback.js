@@ -4,26 +4,26 @@ import { save, remove } from './storage';
 const form = document.querySelector(".feedback-form");
 const LOCALSTORAGE_KEY = "feedback-form-state";
 
-save("test", "test");
 
-// form.addEventListener("input", handleClick);
 
-// form.addEventListener("submit", handleSubmit);
+form.addEventListener("input", handleClick);
 
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   const {
-//     elements: { email, message }
-//   } = event.currentTarget;
+form.addEventListener("submit", handleSubmit);
 
-//   if (email.value === "" || message.value === "") {
-//     return alert("Please fill in all the fields!");
-//   }
+function handleSubmit(event) {
+  event.preventDefault();
+  const {
+    elements: { email, message }
+  } = event.currentTarget;
 
-//   console.log(`email: ${email.value}, message: ${message.value}`);
-//   remove(LOCALSTORAGE_KEY);  
-//   event.currentTarget.reset();
-// }
+  if (email.value === "" || message.value === "") {
+    return alert("Please fill in all the fields!");
+  }
+
+  console.log(`email: ${email.value}, message: ${message.value}`);
+  remove(LOCALSTORAGE_KEY);  
+  event.currentTarget.reset();
+}
 
 // function follow (data) {
     
@@ -39,8 +39,8 @@ save("test", "test");
 
 // }
 
-// const handleClick = (event) => {
-//   console.log("event: ", event);
-//   console.log("event type: ", event.type);
-//   console.log("currentTarget: ", event.currentTarget);
-// };
+const handleClick = (event) => {
+  console.log("event: ", event);
+  console.log("event type: ", event.type);
+  console.log("currentTarget: ", event.currentTarget);
+}
