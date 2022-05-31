@@ -4,7 +4,11 @@ import { save, remove } from './storage';
 const form = document.querySelector(".feedback-form");
 const LOCALSTORAGE_KEY = "feedback-form-state";
 
-
+const handleClick = (event) => {
+    console.log("event: ", event);
+    console.log("event type: ", event.type);
+    console.log("currentTarget: ", event.currentTarget);
+};
 
 form.addEventListener("input", handleClick);
 
@@ -39,8 +43,3 @@ function handleSubmit(event) {
 
 // }
 
-const handleClick = (event) => {
-  console.log("event: ", event);
-  console.log("event type: ", event.type);
-  console.log("currentTarget: ", event.currentTarget);
-}
