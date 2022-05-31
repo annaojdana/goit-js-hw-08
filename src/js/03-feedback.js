@@ -33,8 +33,8 @@ function saveChanges (data) {
     elements: { email, message }
   } = data.currentTarget;
     const iputsData = {
-        email: email.value,
-        message: message.value,
+        emailContent: email.value,
+        messageContent: message.value,
     }; 
    
     save(LOCALSTORAGE_KEY, iputsData);
@@ -43,8 +43,12 @@ function saveChanges (data) {
 function getData (data) {
     let currentData = load(LOCALSTORAGE_KEY);
     console.log(currentData);
-  const {
+  const { emailContent, messageContent }
+        = currentData;
+     const {
     elements: { email, message }
-  } = data.currentTarget;
+    } = data.currentTarget;
+    email.value = emailContent;
+    message.value = messageContent;
 }
 
