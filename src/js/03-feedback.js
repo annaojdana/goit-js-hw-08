@@ -1,16 +1,17 @@
 import throttle from 'lodash.throttle';
 import { save, remove } from './storage';
 
+// variables
 const form = document.querySelector(".feedback-form");
 const LOCALSTORAGE_KEY = "feedback-form-state";
+const throttleSave = throttle(event => saveChanges(event), 500);
 
-window.addEventListener('load', (event) => {
-  console.log('page is fully loaded');
-});
-form.addEventListener("input", throttle(event => saveChanges(event), 500));
-
+// addEventListeners
+window.addEventListener('load', getData);
+form.addEventListener("input", throttleSave);
 form.addEventListener("submit", handleSubmit);
 
+// functions
 function handleSubmit(event) {
   event.preventDefault();
   const {
@@ -37,5 +38,13 @@ function saveChanges (data) {
     }; 
    
     save(LOCALSTORAGE_KEY, iputsData);
+};
+
+function getData (data) {
+    let currentData = load(LOCALSTORAGE_KEY);
+    console.log(currentData);
+  const {
+    elements: { email, message }
+  } = data.currentTarget;
 }
 
