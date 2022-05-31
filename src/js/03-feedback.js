@@ -4,13 +4,8 @@ import { save, remove } from './storage';
 const form = document.querySelector(".feedback-form");
 const LOCALSTORAGE_KEY = "feedback-form-state";
 
-const handleClick = (event) => {
-    console.log("event: ", event);
-    console.log("event type: ", event.type);
-    console.log("currentTarget: ", event.currentTarget);
-};
 
-form.addEventListener("input", handleClick);
+form.addEventListener("input", follow);
 
 form.addEventListener("submit", handleSubmit);
 
@@ -29,17 +24,17 @@ function handleSubmit(event) {
   event.currentTarget.reset();
 }
 
-// function follow (data) {
+function follow (data) {
     
-//   const {
-//     elements: { email, message }
-//   } = data.currentTarget;
-//     const iputsData = {
-//         email: email.value,
-//         message: message.value,
-//     }; 
+  const {
+    elements: { email, message }
+  } = data.currentTarget;
+    const iputsData = {
+        email: email.value,
+        message: message.value,
+    }; 
    
-//     save(LOCALSTORAGE_KEY, iputsData);
+    save(LOCALSTORAGE_KEY, iputsData);
 
-// }
+}
 
