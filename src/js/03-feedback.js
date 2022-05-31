@@ -11,7 +11,7 @@ window.addEventListener('load', getData);
 form.addEventListener("input", throttleSave);
 form.addEventListener("submit", handleSubmit);
 
-// functions
+// Functions
 function handleSubmit(event) {
   event.preventDefault();
   const {
