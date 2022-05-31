@@ -27,8 +27,8 @@ function handleSubmit(event) {
   event.currentTarget.reset();
 }
 
-function saveChanges (data = {}) { 
-  const {elements: { email, message }} = data.currentTarget;
+function saveChanges (data) { 
+  const {elements: { email, message }} = form;
   const iputsData = {
     emailContent: email.value,
     messageContent: message.value,
