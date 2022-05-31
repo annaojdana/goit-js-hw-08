@@ -4,7 +4,9 @@ import { save, remove } from './storage';
 const form = document.querySelector(".feedback-form");
 const LOCALSTORAGE_KEY = "feedback-form-state";
 
-
+window.addEventListener('load', (event) => {
+  console.log('page is fully loaded');
+});
 form.addEventListener("input", throttle(event => saveChanges(event), 500));
 
 form.addEventListener("submit", handleSubmit);
@@ -35,6 +37,5 @@ function saveChanges (data) {
     }; 
    
     save(LOCALSTORAGE_KEY, iputsData);
-
 }
 
