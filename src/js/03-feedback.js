@@ -27,28 +27,22 @@ function handleSubmit(event) {
   event.currentTarget.reset();
 }
 
-function saveChanges (data) {
-    
-  const {
-    elements: { email, message }
-  } = data.currentTarget;
-    const iputsData = {
-        emailContent: email.value,
-        messageContent: message.value,
-    }; 
-   
-    save(LOCALSTORAGE_KEY, iputsData);
+function saveChanges (data) { 
+  const {elements: { email, message }} = data.currentTarget;
+  const iputsData = {
+    emailContent: email.value,
+    messageContent: message.value,
+  }; 
+  save(LOCALSTORAGE_KEY, iputsData);
 };
 
-function getData (data) {
-    let currentData = load(LOCALSTORAGE_KEY);
-    console.log(currentData);
-  const { emailContent, messageContent }
-        = currentData;
-     const {
-    elements: { email, message }
-    } = form;
+function getData() { 
+  let currentData = load(LOCALSTORAGE_KEY);
+  if (currentData !== undefined) {
+    const { emailContent, messageContent } = currentData;
+    const { elements: { email, message } } = form;
     email.value = emailContent;
     message.value = messageContent;
-}
+  };
+};
 
