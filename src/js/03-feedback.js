@@ -5,7 +5,7 @@ const form = document.querySelector(".feedback-form");
 const LOCALSTORAGE_KEY = "feedback-form-state";
 
 
-form.addEventListener("input", follow);
+form.addEventListener("input", throttle(event => saveChanges(event), 500));
 
 form.addEventListener("submit", handleSubmit);
 
@@ -24,7 +24,7 @@ function handleSubmit(event) {
   event.currentTarget.reset();
 }
 
-function follow (data) {
+function saveChanges (data) {
     
   const {
     elements: { email, message }
