@@ -47,7 +47,7 @@ function getData (data) {
         = currentData;
      const {
     elements: { email, message }
-    } = data.currentTarget;
+    } = form;
     email.value = emailContent;
     message.value = messageContent;
 }
