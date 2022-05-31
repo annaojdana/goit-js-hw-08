@@ -4,7 +4,7 @@ import { save, load, remove } from './storage';
 // variables
 const form = document.querySelector(".feedback-form");
 const LOCALSTORAGE_KEY = "feedback-form-state";
-const throttleSave = throttle(event => saveChanges(event), 500);
+const throttleSave = throttle(() => saveChanges(), 500);
 
 // addEventListeners
 window.addEventListener('load', getData);
@@ -27,7 +27,7 @@ function handleSubmit(event) {
   event.currentTarget.reset();
 }
 
-function saveChanges (data) { 
+function saveChanges () { 
   const {elements: { email, message }} = form;
   const iputsData = {
     emailContent: email.value,
