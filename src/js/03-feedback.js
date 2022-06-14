@@ -5,32 +5,29 @@ import { save, load, remove } from './storage';
 const form = document.querySelector(".feedback-form");
 
 const LOCALSTORAGE_KEY = "feedback-form-state";
-const throttleSave = throttle((event) => saveChanges(event), 500);
+const  { email, message } = form.elements;
 
 // addEventListeners
-form.addEventListener("input", throttleSave);
+form.addEventListener("input", throttle(saveChanges, 500
+));
 form.addEventListener("submit", handleSubmit);
 
-
-getData(); 
-
+getData();
 
 // Functions
 function handleSubmit(event) {
   event.preventDefault();
-  const  { email, message } = event.currentTarget.elements;
-
+  
   if (email.value === "" || message.value === "") {
     return alert("Please fill in all the fields!");
   }
 
   console.log(`email: ${email.value}, message: ${message.value}`);
   remove(LOCALSTORAGE_KEY);  
-  event.currentTarget.reset();
+  event.target.reset();
 }
 
 function saveChanges (event) { 
-  const { email, message } = event.currentTarget.elements;
   const iputsData = {
     email: email.value,
     message: message.value,
@@ -40,14 +37,12 @@ function saveChanges (event) {
 
 function getData() { 
   const storedData = load(LOCALSTORAGE_KEY);
-    if (storedData === null) {
+ 
+    if (storedData === undefined ) {
         return
     };
-
-    const { email, message } = form.elements;
-    
+  
     email.value = storedData.email;
     message.value = storedData.message;
   
 };
-
